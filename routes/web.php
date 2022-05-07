@@ -20,9 +20,11 @@ Route::get('/home', function () {
     return redirect('/dashboard');
 });
 
-Route::get('/', [LoginController::class, 'login'])->middleware('guest');
+Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
 Route::get('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::post('/dashboard/keuangan', [DashboardController::class, 'keuangan'])->middleware('auth');

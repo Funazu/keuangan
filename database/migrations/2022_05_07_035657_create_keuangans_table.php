@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('keuangans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('masuk')->nullable();
+            $table->string('keluar')->nullable();
+            $table->string('keterangan');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }
